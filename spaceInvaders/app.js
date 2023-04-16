@@ -1,7 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
     const squares = document.querySelectorAll('.grid div')
     const resultDisplay = document.querySelector('#result')
-    
+
+
     let width = 15
     let currentShooterIndex = 202
     let currentInvaderIndex = 0
@@ -45,10 +46,10 @@ document.addEventListener('DOMContentLoaded', () => {
 //move alien
 
 function moveInvaders(){
-    const leftEdge = alienInvaders[0] % width ===0
+    const leftEdge = alienInvaders[0] % width === 0
     const rightEdge = alienInvaders[alienInvaders.length -1] % width === width -1
 
-    if ((leftEdge && direction === -1) || (rightEdge && direction)){
+    if ((leftEdge && direction === -1) || (rightEdge && direction ===1 )){
         direction = width
     }else if(direction === width) {
         if(leftEdge) direction = 1
@@ -63,9 +64,21 @@ function moveInvaders(){
     for (let i=0; i<= alienInvaders.length -1; i++){
         squares[alienInvaders[i]].classList.add('invader')
     }
+    // decide game over
+    if(squares[currentInvaderIndex].classList.contains('invader', 'shooter')){
+        resultDisplay.textContent = 'GAME OVER'
+        squares[currentShooterIndex].classList.add('boom')
+        clearInterval(invaderID)
+    }
+    for (let i = 0; i <= alienInvaders.length -1; i++) {
+        if(alienInvaders[i] > (squares.length - (width-1))) {
+            resultDisplay.textContent = 'GAME OVER'
+            clearInterval(invaderID)
+        }
+    }
 }
 
-
+invaderID = setInterval(moveInvaders, 500)
 
 
 

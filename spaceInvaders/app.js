@@ -62,7 +62,9 @@ function moveInvaders(){
         alienInvaders[i] += direction
 }
     for (let i=0; i<= alienInvaders.length -1; i++){
-        squares[alienInvaders[i]].classList.add('invader')
+        if (!alienInvadersTakenDown.includes(i)){
+            squares[alienInvaders[i]].classList.add('invader')
+        }
     }
     // decide game over
     if(squares[currentInvaderIndex].classList.contains('invader', 'shooter')){
@@ -72,9 +74,15 @@ function moveInvaders(){
     }
     for (let i = 0; i <= alienInvaders.length -1; i++) {
         if(alienInvaders[i] > (squares.length - (width-1))) {
-            resultDisplay.textContent = 'GAME OVER'
+            resultDisplay.textContent = 'GAME OVER!'
             clearInterval(invaderID)
         }
+    }
+
+    //decide win
+    if(alienInvadersTakenDown.length === alienInvaders.length){
+        resultDisplay.textContent = 'You Win!'
+        clearInterval(invaderID)
     }
 }
 

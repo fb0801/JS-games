@@ -10,7 +10,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let result = 0
     let direction =1
     let invaderID 
-
+    let audio2 = document.querySelector('#audi')
+    let audio1 = document.querySelector('#aud')
     //def alien
     const alienInvaders = [
         0,1,2,3,4,5,6,7,8,9,
@@ -75,6 +76,7 @@ function moveInvaders(){
     for (let i = 0; i <= alienInvaders.length -1; i++) {
         if(alienInvaders[i] > (squares.length - (width-1))) {
             resultDisplay.textContent = 'GAME OVER!'
+            audio1.play()
             clearInterval(invaderID)
         }
     }
@@ -98,14 +100,15 @@ function shoot(e){
         squares[currentLaserIndex].classList.remove('laser')
         currentLaserIndex -= width
         squares[currentLaserIndex].classList.add('laser')
+     
         if(squares[currentLaserIndex].classList.contains('invader')){
             squares[currentLaserIndex].classList.remove('laser')
             squares[currentLaserIndex].classList.remove('invader')
             squares[currentLaserIndex].classList.add('boom')
-
+            
             setTimeout(() => squares[currentLaserIndex].classList.remove('boom'), 250)
             clearInterval(laserId)
-
+           
             const alienTakenDown =alienInvaders.indexOf(currentLaserIndex)
             alienInvadersTakenDown.push(alienTakenDown)
             result++
@@ -125,6 +128,7 @@ function shoot(e){
  switch (e.keyCode) {
     case 32:
         laserId = setInterval(moveLaser, 100)
+        audio2.play()
         break;
  
  }

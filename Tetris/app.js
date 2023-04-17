@@ -5,12 +5,15 @@ const grid = document.querySelector('.grid')
 const displaySquares = document.querySelectorAll('.previous-grid div')
 const startBtn = document.querySelector('button')
 const scoreDisplay = document.querySelector('.score-display')
-const lineDisplay = document.querySelector('.line-display')
+const lineDisplay = document.querySelector('.lines-display')
 let squares = Array.from(grid.querySelectorAll('div'))
 const width = 10
 const height = 20
 let currentPosition = 4
 let timerId
+let score = 0
+let lines = 0
+let currentIndex =0
 
 //assign func to key
 function control(e){
@@ -192,5 +195,34 @@ startBtn.addEventListener('click', () => {
         displayShape()
     }
 })
+
+//game over function
+function gameOver(){
+    if(current.some(index =>squares[currentPosition + index].classList.contains('block2'))){
+        scoreDisplay.innerHTML ='END'
+        clearInterval(timerId)
+    }
+}
+
+//add score
+function addScore(){
+    for(currentIndex =0; currentIndex<199;i+=width){
+        const row =[currentIndex,currentIndex+1,currentIndex+2,currentIndex+3,
+            currentIndex+4, currentIndex+5,currentIndex+6,currentIndex+7,currentIndex+8,currentIndex+9]
+
+        if(row.every(index => squares[index].classList.contains('block2'))){
+            score+=10
+            lines +=1
+            scoreDisplay.innerHTML =score
+            lineDisplay.innerHTML = lines
+            row.foreach(index => {
+                squares[index].classList.remove('block2') || squares[index].classList.remove('block')
+            })
+            const squaresRemoved = squares.splice(currentIndex,width)
+            squares = squaresRemoved.concat(squares)
+            squares.foreach(cell => grid.appendChild(cell))
+        }
+    }
+}
 
 })

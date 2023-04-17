@@ -172,16 +172,43 @@ function lose () {
 
 
 //move frog when on log
-function 
+function moveWithLogLeft(){
+    if(currentIndex >= 27 && currentIndex < 35){
+        squares[currentIndex].classList.remove('frog')
+        currentIndex +=1 
+        squares[currentIndex].classList.add('frog')
+    }
+}
 
 
+//move frog when on log
+function moveWithLogRight(){
+    if(currentIndex > 18 && currentIndex <= 26){
+        squares[currentIndex].classList.remove('frog')
+        currentIndex -=1 
+        squares[currentIndex].classList.add('frog')
+    }
+}
 
+//all func piece
+function movePiece(){
+    currentTime--
+    timeLeft.textContent = currentTime
+    autoMoveCar()
+    autoMoveLogs()
+    moveWithLogLeft()
+    moveWithLogRight()
+    lose()
+}
 
-
-
-
-
-
-
+//start and pause
+startBtn.addEventListener('click', () => {
+    if(timerId) {
+        clearInterval(timerId)
+    } else{
+        timerId = setInterval(movePiece, 1000)
+        document.addEventListener('keyup', moveFrog)
+    }
+})
 
 })

@@ -11,6 +11,7 @@ const logsRight = document.querySelector('.log-right')
 const width = 9
 let currentIndex = 76
 let timerId
+let currentTime  = 20
 
 
 //render frog on starting block
@@ -158,14 +159,20 @@ function win (){
 }
 
 
+//lose
+function lose () {
+    if ((currentTime === 0) || (squares[currentIndex].classList.contains('c1'))
+    ||(squares[currentIndex].classList.contains('l5'))
+    || (squares[currentIndex].classList.contains('l4'))) {
+        result.innerHTML = "YOU LOSE!"
+        squares[currentIndex].classList.remove('frog')
+        clearInterval.removeEventListener('keyup', moveFrog)
+    }
+}
 
 
-
-
-
-
-
-
+//move frog when on log
+function 
 
 
 

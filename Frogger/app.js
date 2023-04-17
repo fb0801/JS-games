@@ -4,7 +4,10 @@ const squares = document.querySelectorAll('.grid div')
 const timeLeft = document.querySelector('#time-left')
 const result = document.querySelector('#result')
 const startBtn = document.querySelector('#button')
-const carsLeft = document.querySelector('.cars-left')
+const carsLeft = document.querySelector('.car-left')
+const carsRight = document.querySelector('.car-right')
+const logLeft = document.querySelector('.log-left')
+const logRight = document.querySelector('.log-right')
 const width = 9
 let currentIndex = 76
 let timerId
@@ -35,6 +38,14 @@ function moveFrog(e){
     win()
 }
 
+//move car
+function autoMoveCar(){
+    carsLeft.foreach(carsLeft => moveCarLeft(carLeft))
+    carsRight.foreach(carsRight => moveCarRight(carsRight))
+}
+
+
+//move Left
 
 
 })

@@ -6,8 +6,8 @@ const result = document.querySelector('#result')
 const startBtn = document.querySelector('#button')
 const carsLeft = document.querySelector('.car-left')
 const carsRight = document.querySelector('.car-right')
-const logLeft = document.querySelector('.log-left')
-const logRight = document.querySelector('.log-right')
+const logsLeft = document.querySelector('.log-left')
+const logsRight = document.querySelector('.log-right')
 const width = 9
 let currentIndex = 76
 let timerId
@@ -40,7 +40,7 @@ function moveFrog(e){
 
 //move car
 function autoMoveCar(){
-    carsLeft.foreach(carsLeft => moveCarLeft(carLeft))
+    carsLeft.foreach(carsLeft => moveCarLeft(carsLeft))
     carsRight.foreach(carsRight => moveCarRight(carsRight))
 }
 
@@ -51,12 +51,15 @@ function moveCarLeft(carLeft){
         case carLeft.classList.contains('c1'):
             carLeft.classList.remove('c1')
             carLeft.classList.add('c2')
+            break
         case carLeft.classList.contains('c2'):
             carLeft.classList.remove('c2')
             carLeft.classList.add('c3')
+            break
         case carLeft.classList.contains('c3'):
             carLeft.classList.remove('c3')
             carLeft.classList.add('c1')
+            break
     }
 }
 
@@ -64,27 +67,95 @@ function moveCarLeft(carLeft){
 
 //mve right
 
-function moveCarLeft(carsRight){
+function moveCarRight(carsRight){
     switch (true) {
         case carsRight.classList.contains('c1'):
             carsRight.classList.remove('c1')
-            carsRight.classList.add('c2')
+            carsRight.classList.add('c3')
+            break
         case carsRight.classList.contains('c2'):
             carsRight.classList.remove('c2')
-            carsRight.classList.add('c3')
+            carsRight.classList.add('c1')
+            break
         case carsRight.classList.contains('c3'):
             carsRight.classList.remove('c3')
-            carsRight.classList.add('c1')
+            carsRight.classList.add('c2')
+            break
     }
 }
 
 
+//move logs
+function autoMoveLogs(){
+    logsLeft.foreach(logLeft => moveLogLeft(logLeft))
+    logsRight.foreach(logRight => moveLogLeft(logRight))
+}
+
+//move Left
+function moveLogLeft(logLeft){
+    switch (true) {
+        case logLeft.classList.contains('l1'):
+            logLeft.classList.remove('l1')
+            logLeft.classList.add('l2')
+            break
+        case logLeft.classList.contains('l2'):
+            logLeft.classList.remove('l2')
+            logLeft.classList.add('l3')
+            break
+        case logLeft.classList.contains('l3'):
+            logLeft.classList.remove('l3')
+            logLeft.classList.add('l4')
+            break
+        case logLeft.classList.contains('l4'):
+            logLeft.classList.remove('l4')
+            logLeft.classList.add('l5')
+            break
+        case logLeft.classList.contains('l5'):
+            logLeft.classList.remove('l5')
+            logLeft.classList.add('l`')
+            break
+    }
+}
 
 
+//mve right
+
+function moveLogRight(logRight){
+    switch (true) {
+        case logRight.classList.contains('l1'):
+            logRight.classList.remove('l1')
+            logRight.classList.add('l5')
+            break
+        case logRight.classList.contains('l2'):
+            logRight.classList.remove('l2')
+            logRight.classList.add('l1')
+            break
+        case logRight.classList.contains('l3'):
+            logRight.classList.remove('l3')
+            logRight.classList.add('l2')
+            break
+        case logRight.classList.contains('l4'):
+            logRight.classList.remove('l4')
+            logRight.classList.add('l3')
+            break 
+        case logRight.classList.contains('l5'):
+            logRight.classList.remove('l5')
+            logRight.classList.add('l4') 
+            break
+    }
+}
 
 
+//to win frogger
 
-
+function win (){
+    if (squares[4].classList.contains('frog')){
+        result.innerHTML = 'YOU WIN!!'
+        squares[currentIndex].classList.remove('frog')
+        clearInterval(timerId)
+        document.removeEventListener('keyup', moveFrog)
+    }
+}
 
 
 

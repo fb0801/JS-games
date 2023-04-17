@@ -46,6 +46,64 @@ function autoMoveCar(){
 
 
 //move Left
+function moveCarLeft(carLeft){
+    switch (true) {
+        case carLeft.classList.contains('c1'):
+            carLeft.classList.remove('c1')
+            carLeft.classList.add('c2')
+        case carLeft.classList.contains('c2'):
+            carLeft.classList.remove('c2')
+            carLeft.classList.add('c3')
+        case carLeft.classList.contains('c3'):
+            carLeft.classList.remove('c3')
+            carLeft.classList.add('c1')
+    }
+}
+
+
+
+//mve right
+
+function moveCarLeft(carsRight){
+    switch (true) {
+        case carsRight.classList.contains('c1'):
+            carsRight.classList.remove('c1')
+            carsRight.classList.add('c2')
+        case carsRight.classList.contains('c2'):
+            carsRight.classList.remove('c2')
+            carsRight.classList.add('c3')
+        case carsRight.classList.contains('c3'):
+            carsRight.classList.remove('c3')
+            carsRight.classList.add('c1')
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 })

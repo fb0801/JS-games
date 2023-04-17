@@ -7,6 +7,20 @@ const width = 10
 const height = 20
 let currentPosition = 4
 
+//assign func to key
+function control(e){
+    if(e.keycode ==37){
+        moveLeft()
+    } else if (e.keycode ===38){
+        rotate()
+    } else if(e.keycode ===39){
+        moveRight()
+    }else if(e.keycode ===40){
+        moveDown
+    }
+}
+document.addEventListener('keyup', control)
+
 //tetromines the shapes
 const lTetromino =[
     [1, width+1, width*2+1, 2],
@@ -59,28 +73,69 @@ let current = theTetrominoes[random][currentRotation]//randomly select a tetro a
 
 //draw the tetro
 function draw(){
-    current.forEach(index => {
-        squares[currentPosition + index].classList.add('tetromino')
+    current.forEach(index => (
+        squares[currentPosition + index].classList.add('block')
         //squares[currentPosition + index].style.backgroundColor =colors[random]
-    })
+    ))
 }
 
 //undraw the tetro
 function undraw(){
-    current.forEach(index =>{
-        squares[currentPosition + index].classList.remove('tetromino')
+    current.forEach(index =>(
+        squares[currentPosition + index].classList.remove('block')
         //squares[currentPosition + index].style.backgroundColor = ''
 
-    })
+    ))
 }
 
+//move dwn func
+function moveDown(){
+    undraw()//removes the shape
+    currentPosition +=width
+    draw()//draws the shape
+    freeze()
+}
+
+//move tetro right
+function moveRight(){
+    undraw()
+    const isAtRightEdge = current.some(index =>(currentPosition + index) % width === width - 1)
 
 
+    if(!isAtRightEdge) currentPosition +=1
 
+    if(current.some(index => squares[currentPosition + index].classList.contains('block2'))){
+        currentPosition -=1
 
+    }
+    draw()
+}
 
+//move the tetro lft when condition is met
+function moveLeft(){
+    undraw()
+    const isAtLeftEdge = current.some(index =>(currentPosition + index) % width ===0)
 
+    if(!isAtLeftEdge) currentPosition -=1
 
+    if(current.some(index => squares[currentPosition + index].classList.contains('block2'))){
+    currentPosition +=1
+}
+draw()
+}
+
+//rotate the tetro
+function rotate(){
+    undraw()
+    currentRotation ++
+
+    if (currentRotation === current.length){
+        //if the shape is 4 goes back to 0
+        currentRotation = 0
+    }
+    current = theTetrominoes[random][currentRotation]
+    draw()
+}
 
 
 

@@ -4,10 +4,10 @@ const squares = document.querySelectorAll('.grid div')
 const timeLeft = document.querySelector('#time-left')
 const result = document.querySelector('#result')
 const startBtn = document.querySelector('#button')
-const carsLeft = document.querySelector('.car-left')
-const carsRight = document.querySelector('.car-right')
-const logsLeft = document.querySelector('.log-left')
-const logsRight = document.querySelector('.log-right')
+const carsLeft = document.querySelectorAll('.car-left')
+const carsRight = document.querySelectorAll('.car-right')
+const logsLeft = document.querySelectorAll('.log-left')
+const logsRight = document.querySelectorAll('.log-right')
 const width = 9
 let currentIndex = 76
 let timerId

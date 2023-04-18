@@ -31,14 +31,21 @@ function generateComputerChoice(){
 function getResult(){
     if(computerChoice === userChoice){
         result = 'ITS A DRAW!'
+       resultDisplay.innerHTML = computerChoice.toUpperCase()
     }
     if(computerChoice === 'rock' && userChoice ==='paper'){
         result = 'YOU LOSE!'
+        resultDisplay.innerHTML = computerChoice.toUpperCase()
+
     }
     if(computerChoice === 'rock' && userChoice === 'scissors'){
         result = 'YOU LOSE!'
+        resultDisplay.innerHTML = computerChoice.toUpperCase()
+
     }
     if(computerChoice === 'rock' && userChoice ===''){
         result = 'ITS A DRAW!'
+        resultDisplay.innerHTML = computerChoice.toUpperCase()
+
     }
 }

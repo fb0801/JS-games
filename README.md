@@ -6,6 +6,8 @@ Learning to build games in JavaScript
 <h2> Changes made: </h2>
 Added sounds for firing a laser and other events in the game
 
+For Rock Paper Scissor game have made it that the choice is capitalised 
+
 <h2>Resources used:</h2>
 
 https://www.youtube.com/watch?v=lhNdUVh3qCc

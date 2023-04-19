@@ -34,7 +34,7 @@ function getResult(){
        resultDisplay.innerHTML = computerChoice.toUpperCase()
     }
     if(computerChoice === 'rock' && userChoice ==='paper'){
-        result = 'YOU LOSE!'
+        result = 'YOU WIN!'
         resultDisplay.innerHTML = computerChoice.toUpperCase()
 
     }
@@ -43,8 +43,13 @@ function getResult(){
         resultDisplay.innerHTML = computerChoice.toUpperCase()
 
     }
-    if(computerChoice === 'rock' && userChoice ===''){
-        result = 'ITS A DRAW!'
+    if(computerChoice === 'paper' && userChoice ==='scissors'){
+        result = 'YOU WIN!'
+        resultDisplay.innerHTML = computerChoice.toUpperCase()
+
+    }
+    if(computerChoice === 'paper' && userChoice ==='rock'){
+        result = 'YOU LOSE!'
         resultDisplay.innerHTML = computerChoice.toUpperCase()
 
     }

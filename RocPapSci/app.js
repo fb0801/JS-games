@@ -11,6 +11,7 @@ possibleChoices.forEach(possibleChoices => possibleChoices.addEventListener('cli
     userChoiceDisplay.innerHTML = userChoice.toUpperCase()
 
     generateComputerChoice()
+    getResult()
 }))
 
 function generateComputerChoice(){
@@ -31,7 +32,7 @@ function generateComputerChoice(){
 function getResult(){
     if(computerChoice === userChoice){
         result = 'ITS A DRAW!'
-       resultDisplay.innerHTML = computerChoice.toUpperCase()
+       resultDisplay.innerHTML = result.toUpperCase()
     }
     if(computerChoice === 'rock' && userChoice ==='paper'){
         result = 'YOU WIN!'
@@ -53,4 +54,15 @@ function getResult(){
         resultDisplay.innerHTML = computerChoice.toUpperCase()
 
     }
+    if(computerChoice === 'scissors' && userChoice ==='rock'){
+        result = 'YOU WIN!'
+        resultDisplay.innerHTML = computerChoice.toUpperCase()
+
+    }
+    if(computerChoice === 'scissors' && userChoice ==='paper'){
+        result = 'YOU WIN!'
+        resultDisplay.innerHTML = computerChoice.toUpperCase()
+
+    }
+    
 }

@@ -32,21 +32,17 @@ function generateComputerChoice(){
 function getResult(){
     if(computerChoice === userChoice){
         result = 'ITS A DRAW!'
-       resultDisplay.innerHTML = result.toUpperCase()
     }
     if(computerChoice === 'rock' && userChoice ==='paper'){
         result = 'YOU WIN!'
-        resultDisplay.innerHTML = computerChoice.toUpperCase()
 
     }
     if(computerChoice === 'rock' && userChoice === 'scissors'){
         result = 'YOU LOSE!'
-        resultDisplay.innerHTML = computerChoice.toUpperCase()
 
     }
     if(computerChoice === 'paper' && userChoice ==='scissors'){
         result = 'YOU WIN!'
-        resultDisplay.innerHTML = computerChoice.toUpperCase()
 
     }
     if(computerChoice === 'paper' && userChoice ==='rock'){
@@ -56,13 +52,12 @@ function getResult(){
     }
     if(computerChoice === 'scissors' && userChoice ==='rock'){
         result = 'YOU WIN!'
-        resultDisplay.innerHTML = computerChoice.toUpperCase()
 
     }
     if(computerChoice === 'scissors' && userChoice ==='paper'){
         result = 'YOU WIN!'
-        resultDisplay.innerHTML = computerChoice.toUpperCase()
+       
 
     }
-    
+    resultDisplay.innerHTML = result.toUpperCase()
 }

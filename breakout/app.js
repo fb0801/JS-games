@@ -3,6 +3,7 @@ const blockWidth = 100
 const blockHeight = 20
 const boardWidth = 560
 const ballDiameter = 20
+const boardHeight = 300
 
 let xDirection =2
 let yDirection=2
@@ -122,14 +123,15 @@ timerID= setInterval(moveBall,  30)
 //check for coll
 function checkForCollisions(){
     //check for wall collide
-    if(ballCurrentPosition[0] >= (boardWidth - ballDiameter)) {
+    if(ballCurrentPosition[0] >= (boardWidth - ballDiameter) 
+    || ballCurrentPosition[1] >= (boardHeight - ballDiameter)) {
         changeDirection()
     }
 }
 
 function changeDirection(){
     if(xDirection === 2 && yDirection ===2){
-        yDirection = -2
+        xDirection = -2
         return
     }
     if()

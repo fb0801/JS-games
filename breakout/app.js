@@ -15,7 +15,7 @@ let currentPosition = userStart
 
 const ballStart = [270, 40]
 let ballCurrentPosition = ballStart
-let score =0
+let score = 0
 
 //create indv block
 class Block {
@@ -120,7 +120,7 @@ function moveBall(){
     checkForCollisions()
 }
 
-timerID= setInterval(moveBall,  30)
+timerID= setInterval(moveBall,  25) // num for ball speed
 
 //check for coll
 function checkForCollisions(){
@@ -137,6 +137,14 @@ function checkForCollisions(){
             changeDirection()
             score++
             scoreDisplay.innerHTML = score
+
+
+            //check for win
+            if(blocks.length === 0){
+                scoreDisplay.innerHTML ='YOU WIN!!!'
+                clearInterval(timerID)
+                document.removeEventListener('keydown', moveUser)
+            }
         }
     }
 
@@ -147,7 +155,15 @@ function checkForCollisions(){
     ) {
         changeDirection()
     }
-    //check for GO
+
+    //check for user collis
+    if(
+    (ballCurrentPosition[0] > currentPosition[0] && ballCurrentPosition[0] < currentPosition[0] + blockWidth) &&
+    (ballCurrentPosition[1] > currentPosition[1] && ballCurrentPosition[1] < currentPosition[1] + blockHeight)
+){
+    changeDirection()
+}
+    //check for GME Ovr
     if(ballCurrentPosition[1] < 0){
         clearInterval(timerID)
         scoreDisplay.innerHTML= 'you lose'

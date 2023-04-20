@@ -124,15 +124,33 @@ timerID= setInterval(moveBall,  30)
 function checkForCollisions(){
     //check for wall collide
     if(ballCurrentPosition[0] >= (boardWidth - ballDiameter) 
-    || ballCurrentPosition[1] >= (boardHeight - ballDiameter)) {
+    || ballCurrentPosition[1] >= (boardHeight - ballDiameter)
+    || ballCurrentPosition[0] <= 0
+    ) {
         changeDirection()
+    }
+    //check for GO
+    if(ballCurrentPosition[1] < 0){
+        clearInterval(timerID)
     }
 }
 
 function changeDirection(){
-    if(xDirection === 2 && yDirection ===2){
+    if(xDirection === 2 && yDirection === 2){
         xDirection = -2
         return
     }
-    if()
+    if(xDirection === 2 && yDirection === -2){
+        xDirection = -2
+        return
+    }
+    if(xDirection === -2 && yDirection === -2){
+        xDirection = 2
+        return
+}
+if(xDirection === -2 && yDirection ===2){
+    xDirection = 2
+    return
+}
+
 }

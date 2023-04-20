@@ -1,11 +1,12 @@
 const grid= document.querySelector('.grid')
+const scoreDisplay=document.querySelector('#score')
 const blockWidth = 100
 const blockHeight = 20
 const boardWidth = 560
 const ballDiameter = 20
 const boardHeight = 300
 
-let xDirection =2
+let xDirection =-2
 let yDirection=2
 
 let timerID 
@@ -132,6 +133,8 @@ function checkForCollisions(){
     //check for GO
     if(ballCurrentPosition[1] < 0){
         clearInterval(timerID)
+        scoreDisplay.innerHTML= 'you lose'
+        document.removeEventListener('keyDown', moveUser)
     }
 }
 
